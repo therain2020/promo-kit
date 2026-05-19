@@ -1,83 +1,166 @@
 # promo-kit
 
-开源项目推广全链路工具包 — Claude Code skill。
+A Claude Code skill that takes your open-source project from zero to published across Chinese and English developer communities. One conversation handles the whole pipeline.
 
-**一条命令完成：** 项目分析 → 文案生成 → AI 痕迹去除 → 配图制作 → 多平台发布。
+## What it does
 
-## 覆盖平台
+You tell it about your project. It figures out the interesting angles, writes copy in Chinese or English, strips out the AI-sounding bits, renders companion images, and publishes to the platform. Or hands you the files to post yourself.
 
-| 语言 | 平台 | 内容类型 |
-|------|------|---------|
-| 中文 | 小红书 | 图文笔记 |
-| 中文 | 小黑盒 | 技术帖子 |
-| English | Twitter/X | Thread / Single post |
-| English | LinkedIn | Article / Short post |
-| English | Reddit | r/programming showcase |
-| English | Dev.to | Technical tutorial |
+Chinese platforms: Xiaohongshu (RED) and Xiaoheihe.
+English platforms: Twitter/X, LinkedIn, Reddit, and Dev.to.
 
-## 架构
+## The pipeline
 
 ```
-promo-kit (统一调度)
-  ├── copywriter    # 文案引擎 — lang:zh/en 路由，6 种叙事角度
-  ├── image-gen     # 配图引擎 — 8 种 HTML 模板 + headless 截图
-  ├── publisher     # 发布引擎 — 薄层包装 agent-reach
-  └── health-check  # 健康检查 — 4 级检查项
+You: "promote my project on Xiaohongshu"
+  → health-check: verifies all engines and dependencies are ready
+  → copywriter: picks narrative angle, drafts platform-native copy
+  → humanizer-zh / humanizer: removes AI writing patterns
+  → image-gen: renders HTML templates, screenshots via headless browser
+  → publisher: hands off to agent-reach for actual posting
 ```
 
-## 安装
+Each step is a standalone engine with its own SKILL.md under `skills/`. You can use the full pipeline or invoke individual engines directly.
+
+## Platforms and formats
+
+| Platform | Language | What it produces |
+|----------|----------|-----------------|
+| Xiaohongshu (RED) | zh | Note with cover image, body, hashtags |
+| Xiaoheihe | zh | Tech post with code blocks, architecture |
+| Twitter/X | en | Thread or single post with hooks |
+| LinkedIn | en | Article or short post |
+| Reddit | en | r/programming or topic-specific post |
+| Dev.to | en | Tutorial or opinion article |
+
+## Six narrative angles
+
+The copywriter picks one (or you specify it):
+
+A: Pain point. What hurt, why nothing fixed it, how this does.
+B: Technical deep-dive. Architecture, key decisions, vs alternatives.
+C: Comparison. Side-by-side with existing tools.
+D: Open source story. Why you built it, highlights, call for contributors.
+E: Pitfalls journal. What went wrong, how you dug out, what you learned.
+F: Tutorial. Who this is for, step-by-step, common gotchas.
+
+## Install
+
+Clone the repo, then link the engines into your project:
 
 ```bash
-# 克隆仓库
 git clone https://github.com/therain2020/promo-kit.git
 
-# 链入 Claude Code（在目标项目目录下执行）
+# From your project directory:
 mkdir -p .claude/skills
-ln -s /path/to/promo-kit/skills/copywriter .claude/skills/copywriter
-ln -s /path/to/promo-kit/skills/image-gen .claude/skills/image-gen
-ln -s /path/to/promo-kit/skills/publisher .claude/skills/publisher
-ln -s /path/to/promo-kit/skills/health-check .claude/skills/health-check
+ln -s "$(pwd)/../promo-kit/skills/copywriter" .claude/skills/copywriter
+ln -s "$(pwd)/../promo-kit/skills/image-gen" .claude/skills/image-gen
+ln -s "$(pwd)/../promo-kit/skills/publisher" .claude/skills/publisher
+ln -s "$(pwd)/../promo-kit/skills/health-check" .claude/skills/health-check
 ```
 
-或者直接在这个仓库里打开 Claude Code，所有子 skill 自动加载。
+On Windows, copy instead of symlink:
 
-## 使用
+```powershell
+Copy-Item ../promo-kit/skills/* .claude/skills/ -Recurse
+```
 
-在 Claude Code 中：
+Or just open Claude Code inside the promo-kit repo. The root SKILL.md loads automatically.
+
+### Dependencies
+
+These need to be installed globally:
+
+```bash
+npx skills add therain2020/humanizer-zh -g -y    # Chinese de-AI
+npx skills add therain2020/humanizer -g -y       # English de-AI
+npx skills add agent-reach -g -y                 # publishing to platforms
+```
+
+gstack browse (used by image-gen for screenshots) comes with any gstack install.
+
+Run `Skill("health-check")` inside Claude Code to confirm everything is wired up.
+
+## Usage
 
 ```
 /promo-kit
 ```
 
-或自然语言：
+Or in natural language:
 
-> "帮我推广这个项目到小红书"
+> "Write a Xiaohongshu post promoting my CLI tool"
 
-> "Write a Twitter thread promoting my CLI tool"
+> "Make a Twitter thread about my open-source library"
 
-### 外部依赖
+The skill walks through:
+1. Figuring out your language, platform, and angle
+2. Reading your project (README, source, config)
+3. Drafting copy from templates in `references/`
+4. Running it through humanizer/humanizer-zh
+5. Generating images if the platform needs them
+6. Asking whether to publish or just save the files
 
-| 依赖 | 用途 | 安装 |
-|------|------|------|
-| humanizer-zh | 中文去 AI 味 | `npx skills add therain2020/humanizer-zh -g` |
-| humanizer | English de-AI | `npx skills add therain2020/humanizer -g` |
-| agent-reach | 多平台发布 | `npx skills add agent-reach -g` |
-| gstack browse | 配图截图 | 自动随 gstack 安装 |
+Output lands in `promo-content/` under your project directory. Publishing logs go to `execution-log/`.
 
-运行 `Skill("health-check")` 验证所有依赖就绪。
+### Using engines by themselves
 
-## 目录
+You can call individual engines directly:
+
+```
+/copywriter   — Just the copy. Parameters: lang, platform, angle, hook
+/image-gen    — Just the images. Feed it a markdown file, get PNGs back
+/publisher    — Just the publishing. Content + images → agent-reach
+/health-check — Check if everything is working
+```
+
+## What's inside
 
 ```
 promo-kit/
-├── SKILL.md              # 调度器
-├── skills/               # 4 个独立引擎
-│   ├── copywriter/SKILL.md
-│   ├── image-gen/SKILL.md
-│   ├── publisher/SKILL.md
-│   └── health-check/SKILL.md
-├── templates/            # 配图 HTML ×8
-├── references/           # 文案模板 + 设计规范
-├── promo-content/        # 产出（gitignored）
-└── execution-log/        # 发布记录（gitignored）
+├── SKILL.md                          # dispatcher — entry point for the pipeline
+├── skills/
+│   ├── copywriter/SKILL.md           # lang: zh|en → 6 angles × 6 platforms
+│   ├── image-gen/SKILL.md            # 8 HTML templates → headless screenshot
+│   ├── publisher/SKILL.md            # agent-reach wrapper with retry logic
+│   └── health-check/SKILL.md         # 4-tier dependency validation
+├── templates/                        # HTML image templates
+│   ├── cover-xhs.html                # RED cover: title + tagline
+│   ├── comparison.html               # side-by-side comparison
+│   ├── terminal.html                 # terminal-style CLI window
+│   ├── steps.html                    # numbered step cards
+│   ├── phone-text.html               # simulated phone message
+│   ├── cta-card.html                 # call-to-action card
+│   ├── architecture.html             # component diagram
+│   └── code-block.html               # syntax-highlighted code
+├── references/
+│   ├── copywriter-cn.md              # CN templates (Xiaohongshu, Xiaoheihe)
+│   ├── copywriter-en.md              # EN templates (Twitter, LinkedIn, Reddit, Dev.to)
+│   └── design-guide.md               # image design system
+├── promo-content/                    # generated copy (gitignored)
+└── execution-log/                    # publish records (gitignored)
 ```
+
+## How the engines talk to each other
+
+The dispatcher passes structured parameters between engines. Each engine reads its input, does one thing, and writes output to a known path. The next engine picks it up.
+
+```
+copywriter:   lang, platform, angle, hook → markdown file
+humanizer:    markdown file → de-AI-ed markdown file
+image-gen:    markdown file, platform → PNG files
+publisher:    markdown file, PNG files, platform → agent-reach call
+```
+
+This means you can swap pieces out. Replace image-gen with your own screenshot tool. Skip publisher and post manually. The pipeline doesn't care.
+
+## Image specs
+
+image-gen renders at these resolutions:
+
+| Platform | Size | Per post |
+|----------|------|----------|
+| Xiaohongshu | 750 x 1000 | 3-6 images |
+| Xiaoheihe | 750 x 1000 or 1200 x 800 | 2-4 images |
+
+Templates are plain HTML with inline CSS. No external fonts, no JS frameworks. The headless browser loads them directly from disk and screenshots at 2x resolution.
