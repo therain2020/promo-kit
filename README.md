@@ -1,5 +1,7 @@
 # promo-kit
 
+[中文](README.zh-CN.md)
+
 A Claude Code skill that takes your open-source project from zero to published across Chinese and English developer communities. One conversation handles the whole pipeline.
 
 ## What it does

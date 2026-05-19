@@ -1,5 +1,7 @@
 # promo-kit
 
+[English](README.md)
+
 一个 Claude Code skill，帮你把开源项目从零推到中英文开发者社区。一次对话走完整条流水线。
 
 ## 它做什么
