@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=750, initial-scale=1">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 750px; min-height: 1000px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: #FFFFFF; padding: 80px 50px;
+}
+h1 { font-size: 40px; font-weight: 700; color: #1A1A1A; text-align: center; margin-bottom: 48px; }
+.table { width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid #EEEEEE; }
+.row { display: flex; border-bottom: 1px solid #EEEEEE; }
+.row:last-child { border-bottom: none; }
+.cell { flex: 1; padding: 24px 20px; font-size: 26px; line-height: 1.5; text-align: center; }
+.header-cell { background: #F8F8F8; font-weight: 600; color: #666666; font-size: 24px; }
+.rival { color: #999999; }
+.winner { color: #00C853; font-weight: 600; }
+.loser { color: #FF2442; }
+.check { font-size: 28px; }
+.note {
+  font-size: 22px; color: #999999; text-align: center; margin-top: 40px; line-height: 1.6;
+}
+</style>
+</head>
+<body>
+  <h1>方案对比</h1>
+  <div class="table">{ROWS}</div>
+  <div class="note">* 基于实际使用体验，截止 {DATE}</div>
+</body>
+</html>

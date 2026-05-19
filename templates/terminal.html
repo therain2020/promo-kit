@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=750, initial-scale=1">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 750px; min-height: 1000px;
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "SF Mono", "Menlo", "Consolas", monospace;
+  background: #0D1117; padding: 0;
+}
+.titlebar {
+  background: #161B22; height: 44px; display: flex; align-items: center;
+  padding: 0 20px; border-bottom: 1px solid #30363D;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+.dot-r { background: #FF5F56; }
+.dot-y { background: #FFBD2E; }
+.dot-g { background: #27CA40; }
+.titlebar-text {
+  flex: 1; text-align: center; font-size: 18px; color: #8B949E;
+  font-family: -apple-system, sans-serif; margin-right: 40px;
+}
+.content { padding: 40px 36px; }
+.line { font-size: 23px; line-height: 1.8; color: #C9D1D9; }
+.prompt { color: #58A6FF; }
+.command { color: #C9D1D9; }
+.arg { color: #F78166; }
+.flag { color: #D2A8FF; }
+.comment { color: #8B949E; font-style: italic; }
+.output { color: #7EE787; }
+.error { color: #FF6B6B; }
+.path { color: #FFA657; }
+</style>
+</head>
+<body>
+  <div class="titlebar">
+    <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+    <div class="titlebar-text">{TERMINAL_TITLE}</div>
+  </div>
+  <div class="content">
+    {LINES}
+  </div>
+</body>
+</html>

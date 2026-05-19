@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=750, initial-scale=1">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 750px; height: 1000px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 80px 60px;
+}
+.stars { font-size: 36px; color: #FFD700; margin-bottom: 32px; letter-spacing: 4px; }
+.tagline { font-size: 32px; color: rgba(255,255,255,0.85); text-align: center; margin-bottom: 48px; line-height: 1.5; }
+.button {
+  background: #FF2442; color: #FFFFFF; font-size: 34px; font-weight: 600;
+  padding: 24px 64px; border-radius: 48px; text-align: center;
+  box-shadow: 0 8px 32px rgba(255,36,66,0.4); margin-bottom: 48px;
+}
+.url { font-size: 24px; color: rgba(255,255,255,0.5); text-align: center; margin-bottom: 32px; font-family: monospace; }
+.features { display: flex; gap: 24px; margin-bottom: 48px; }
+.feature {
+  background: rgba(255,255,255,0.1); border-radius: 12px;
+  padding: 20px 24px; text-align: center; color: rgba(255,255,255,0.8); font-size: 22px;
+}
+.project-name { font-size: 28px; color: rgba(255,255,255,0.6); }
+</style>
+</head>
+<body>
+  <div class="project-name">{PROJECT}</div>
+  <div class="stars">{"⭐".repeat(STAR_COUNT)}</div>
+  <div class="tagline">{TAGLINE}</div>
+  <div class="button">{CTA_TEXT}</div>
+  <div class="features">{FEATURES}</div>
+  <div class="url">{URL}</div>
+</body>
+</html>

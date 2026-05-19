@@ -1,0 +1,17 @@
+# 运行时产出
+promo-content/
+promo-plans/
+execution-log/
+
+# 工程产出
+logs/
+.gstack/
+.gbrain/
+
+# Claude Code 本地配置
+.claude/*
+!.claude/skills/
+
+# OS
+.DS_Store
+Thumbs.db
