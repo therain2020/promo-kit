@@ -4,25 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=750, initial-scale=1">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
 body {
-  width: 750px; min-height: 1000px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: #FFFFFF; padding: 80px 50px;
+  width:750px; min-height:1000px;
+  font-family: "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#090A0C; padding:80px 48px;
 }
-h1 { font-size: 40px; font-weight: 700; color: #1A1A1A; text-align: center; margin-bottom: 48px; }
-.table { width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid #EEEEEE; }
-.row { display: flex; border-bottom: 1px solid #EEEEEE; }
-.row:last-child { border-bottom: none; }
-.cell { flex: 1; padding: 24px 20px; font-size: 26px; line-height: 1.5; text-align: center; }
-.header-cell { background: #F8F8F8; font-weight: 600; color: #666666; font-size: 24px; }
-.rival { color: #999999; }
-.winner { color: #00C853; font-weight: 600; }
-.loser { color: #FF2442; }
-.check { font-size: 28px; }
-.note {
-  font-size: 22px; color: #999999; text-align: center; margin-top: 40px; line-height: 1.6;
+h1 {
+  font-family: Georgia,"Noto Serif CJK SC","STSong","SimSun",serif;
+  font-size:44px; font-weight:700; color:#E4E4E6; text-align:center; margin-bottom:48px;
 }
+.table { width:100%; border-radius:14px; overflow:hidden; border:1px solid #22242B }
+.row { display:flex; border-bottom:1px solid #1E1F25 }
+.row:last-child { border-bottom:none }
+.cell { flex:1; padding:22px 16px; font-size:24px; line-height:1.45; text-align:center; color:#C4C4C8 }
+.hdr .cell { background:#131418; font-weight:600; color:#787A80; font-size:22px }
+.win { color:#40C057; font-weight:600 }
+.lose { color:#787A80 }
+.note { font-size:22px; color:#787A80; text-align:center; margin-top:36px; line-height:1.6 }
 </style>
 </head>
 <body>

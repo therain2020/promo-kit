@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+body {
+  width:1080px; min-height:1440px;
+  font-family: "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#090A0C; padding:100px 88px;
+}
+.num {
+  font-family: "JetBrains Mono","Cascadia Code","SF Mono",monospace;
+  font-size:22px; color:#FCC419; letter-spacing:2px; margin-bottom:32px;
+}
+.headline {
+  font-family: Georgia,"Noto Serif CJK SC","STSong","SimSun",serif;
+  font-size:64px; font-weight:700; color:#E4E4E6; line-height:1.18; margin-bottom:64px;
+}
+.steps { display:flex; flex-direction:column }
+.step { display:flex; gap:32px }
+.step-gutter { display:flex; flex-direction:column; align-items:center; min-width:64px }
+.step-dot {
+  width:64px; height:64px; border-radius:50%;
+  background:#131418; border:3px solid #FCC419;
+  color:#FCC419; font-size:28px; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  font-family: "JetBrains Mono","Cascadia Code","SF Mono",monospace;
+  z-index:1; flex-shrink:0;
+}
+.step-line { width:2px; flex:1; background:#22242B; min-height:36px }
+.step-body { flex:1; padding-bottom:48px }
+.step-title { font-size:36px; font-weight:700; color:#E4E4E6; margin-bottom:10px }
+.step-desc { font-size:28px; color:#787A80; line-height:1.55 }
+.step-code {
+  margin-top:16px; background:#131418; border:1px solid #22242B; border-radius:12px;
+  padding:24px 28px; font-family: "JetBrains Mono","Cascadia Code","SF Mono",monospace;
+  font-size:24px; color:#3BC9DB; line-height:1.6;
+}
+</style>
+</head>
+<body>
+  <div class="num">{SECTION_NUM}</div>
+  <div class="headline">{HEADLINE}</div>
+  <div class="steps">{STEPS}</div>
+</body>
+</html>

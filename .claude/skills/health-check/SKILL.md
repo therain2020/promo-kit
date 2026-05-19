@@ -31,11 +31,12 @@ check_level: quick|full
 
 ### L1: 引擎完整性
 
-检查 4 个引擎 SKILL.md 文件存在且 frontmatter 合法：
+检查 5 个引擎 SKILL.md 文件存在且 frontmatter 合法：
 
 ```
 skills/copywriter/SKILL.md
 skills/image-gen/SKILL.md
+skills/template-designer/SKILL.md
 skills/publisher/SKILL.md
 skills/health-check/SKILL.md
 ```
@@ -51,8 +52,15 @@ skills/health-check/SKILL.md
 - `references/copywriter-en.md`
 - `references/design-guide.md`
 
-HTML 模板检查（8 个）：
+HTML 模板检查（15 个）：
 - `templates/cover-xhs.html`
+- `templates/cover-juejin.html`
+- `templates/xhs-cover-tech.html`
+- `templates/xhs-pain.html`
+- `templates/xhs-features.html`
+- `templates/xhs-steps.html`
+- `templates/xhs-cta.html`
+- `templates/xhs-comparison.html`
 - `templates/comparison.html`
 - `templates/terminal.html`
 - `templates/steps.html`
@@ -76,8 +84,8 @@ HTML 模板检查（8 个）：
 
 跑一条最小 pipeline：
 
-1. 用示例数据生成一篇小红书笔记
-2. 用示例数据生成一张 cover-xhs 配图
+1. 用示例数据生成一篇推广文案
+2. 用示例数据生成一张封面配图
 3. 检查产出文件格式正确
 
 验证 `promo-content/` 和 `execution-log/` 目录可写入。
@@ -92,6 +100,7 @@ HTML 模板检查（8 个）：
 L1 引擎完整性: {PASS/FAIL}
   OK  skills/copywriter/SKILL.md
   OK  skills/image-gen/SKILL.md
+  OK  skills/template-designer/SKILL.md
   OK  skills/publisher/SKILL.md
   OK  skills/health-check/SKILL.md
 
@@ -99,7 +108,7 @@ L2 模板完整性: {PASS/FAIL}
   OK  references/copywriter-cn.md
   OK  references/copywriter-en.md
   OK  references/design-guide.md
-  OK  templates/*.html ×8
+  OK  templates/*.html ×15
 
 L3 外部依赖: {PASS/FAIL}
   OK  humanizer-zh

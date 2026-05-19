@@ -4,38 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=750, initial-scale=1">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
 body {
-  width: 750px; height: 1000px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: #F5F5F5; display: flex; flex-direction: column; align-items: center;
-  justify-content: center; padding: 80px 60px;
+  width:750px; height:1000px;
+  font-family: "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#090A0C; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; padding:60px;
 }
 .phone {
-  width: 400px; background: #FFFFFF; border-radius: 32px;
-  padding: 48px 36px; box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  width:420px; background:#131418; border:1px solid #22242B; border-radius:36px;
+  padding:52px 40px;
 }
-.phone-header { font-size: 22px; color: #999999; margin-bottom: 32px; text-align: center; }
-.message { margin-bottom: 28px; }
-.message-text {
-  display: inline-block; background: #F0F0F0; border-radius: 20px;
-  padding: 20px 24px; font-size: 28px; color: #333333; line-height: 1.5;
-  max-width: 100%;
+.phdr { font-size:22px; color:#787A80; margin-bottom:36px; text-align:center }
+.msg { margin-bottom:28px }
+.mtxt {
+  display:inline-block; background:#1E1F25; border-radius:20px;
+  padding:20px 24px; font-size:28px; color:#C4C4C8; line-height:1.5; max-width:100%;
 }
-.message-right { text-align: right; }
-.message-right .message-text { background: #FF2442; color: #FFFFFF; }
-.emoji-large { font-size: 48px; text-align: center; margin: 24px 0; }
+.mr { text-align:right }
+.mr .mtxt { background:linear-gradient(135deg,#3BC9DB,#845EF7); color:#fff }
+.emoji-big { font-size:52px; text-align:center; margin:28px 0 }
 .link-preview {
-  background: #F8F8F8; border-radius: 12px; padding: 20px; margin-top: 16px;
-  font-size: 24px; color: #666666;
+  background:#1E1F25; border-radius:14px; padding:22px; margin-top:16px;
+  font-size:24px; color:#787A80;
 }
-.link-title { font-size: 26px; font-weight: 600; color: #1A1A1A; margin-bottom: 8px; }
-.caption { font-size: 22px; color: #999999; text-align: center; margin-top: 40px; }
+.link-title { font-size:26px; font-weight:700; color:#E4E4E6; margin-bottom:8px }
+.caption { font-size:22px; color:#787A80; text-align:center; margin-top:48px }
 </style>
 </head>
 <body>
   <div class="phone">
-    <div class="phone-header">{CONTEXT}</div>
+    <div class="phdr">{CONTEXT}</div>
     {MESSAGES}
   </div>
   <div class="caption">{CAPTION}</div>

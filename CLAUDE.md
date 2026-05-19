@@ -8,6 +8,7 @@ Key routing rules:
 - Promote open-source project / write promo copy → invoke /promo-kit
 - Just the copy (CN or EN) → invoke /copywriter
 - Just the images → invoke /image-gen
+- Design/create HTML templates → invoke /template-designer
 - Just publish to platforms → invoke /publisher
 - Check engine health → invoke /health-check
 
@@ -16,7 +17,7 @@ Key routing rules:
 promo-kit is a Claude Code skill that handles the full open-source promotion pipeline:
 project analysis → copywriting (zh/en) → de-AI (humanizer/humanizer-zh) → image generation (HTML → headless screenshot) → publishing (agent-reach wrapper).
 
-Chinese platforms: Xiaohongshu, Xiaoheihe.
+Chinese platforms: Xiaohongshu, Xiaoheihe, Juejin.
 English platforms: Twitter/X, LinkedIn, Reddit, Dev.to.
 
 ## Architecture
@@ -27,6 +28,7 @@ promo-kit/
 ├── skills/               # 4 independent engines
 │   ├── copywriter/       # lang: zh|en → 6 angles × 6 platforms
 │   ├── image-gen/        # 8 HTML templates → headless screenshot
+│   ├── template-designer/ # style-driven template generation
 │   ├── publisher/        # agent-reach wrapper with retry
 │   └── health-check/     # 4-tier dependency validation
 ├── templates/            # HTML image templates (×8)
@@ -39,5 +41,6 @@ promo-kit/
 
 - copywriter → humanizer-zh (CN) or humanizer (EN) for de-AI pass
 - image-gen → gstack browse daemon ($B) for headless screenshots
+- template-designer → generates HTML templates from style descriptions
 - publisher → agent-reach for multi-platform publishing
 - health-check → validates all of the above

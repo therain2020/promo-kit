@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+body {
+  width:1080px; height:1440px;
+  font-family: "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#090A0C; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; padding:120px 100px;
+  position:relative; overflow:hidden;
+}
+body::before {
+  content:""; position:absolute; top:-200px; left:50%; transform:translateX(-50%);
+  width:800px; height:800px; border-radius:50%;
+  background:radial-gradient(circle,rgba(132,94,247,0.08) 0%,transparent 70%);
+}
+.stars { font-size:52px; letter-spacing:8px; margin-bottom:48px; position:relative; z-index:1 }
+.headline {
+  font-family: Georgia,"Noto Serif CJK SC","STSong","SimSun",serif;
+  font-size:72px; font-weight:700; color:#E4E4E6; text-align:center;
+  line-height:1.18; margin-bottom:28px; position:relative; z-index:1;
+}
+.subtitle { font-size:34px; color:#787A80; text-align:center; line-height:1.5; margin-bottom:80px; position:relative; z-index:1; max-width:700px }
+.btn {
+  background:linear-gradient(135deg,#3BC9DB,#845EF7); color:#fff;
+  font-size:38px; font-weight:700; padding:34px 96px; border-radius:56px;
+  text-align:center; box-shadow:0 0 60px rgba(59,201,219,0.2);
+  position:relative; z-index:1; margin-bottom:64px;
+}
+.url {
+  font-family: "JetBrains Mono","Cascadia Code","SF Mono",monospace;
+  font-size:26px; color:#787A80; text-align:center; margin-bottom:52px; position:relative; z-index:1;
+}
+.feats { display:flex; gap:20px; position:relative; z-index:1 }
+.feat {
+  background:rgba(255,255,255,0.03); border:1px solid #22242B;
+  border-radius:14px; padding:22px 28px; color:#787A80; font-size:24px; text-align:center;
+}
+</style>
+</head>
+<body>
+  <div class="stars">{STARS}</div>
+  <div class="headline">{HEADLINE}</div>
+  <div class="subtitle">{SUBTITLE}</div>
+  <div class="btn">{BTN_TEXT}</div>
+  <div class="url">{URL}</div>
+  <div class="feats">{FEATURES}</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+body {
+  width:1080px; height:1440px; overflow:hidden;
+  font-family: "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#090A0C; position:relative; display:flex; flex-direction:column;
+}
+.grid {
+  position:absolute; inset:0; opacity:0.03;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.accent-line {
+  position:absolute; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,#3BC9DB,#845EF7,#FCC419);
+}
+.hero { flex:1; display:flex; flex-direction:column; justify-content:flex-end; padding:100px 88px; position:relative; z-index:1 }
+.tag {
+  font-family: "JetBrains Mono","Cascadia Code","SF Mono",monospace;
+  font-size:26px; color:#3BC9DB; letter-spacing:4px; margin-bottom:32px;
+}
+.title {
+  font-family: Georgia,"Noto Serif CJK SC","STSong","SimSun",serif;
+  font-size:108px; font-weight:700; color:#E4E4E6; line-height:1.08;
+  letter-spacing:-2px; margin-bottom:28px;
+}
+.subtitle { font-size:36px; color:#787A80; line-height:1.5; max-width:700px }
+.bottom { position:relative; z-index:1; padding:40px 88px 48px; display:flex; gap:20px; }
+.pill {
+  background:rgba(255,255,255,0.04); border:1px solid #22242B;
+  border-radius:40px; padding:16px 28px; font-size:26px; color:#787A80;
+}
+.pill-active { border-color:#3BC9DB; color:#3BC9DB }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="hero">
+    <div class="tag">{TAG}</div>
+    <div class="title">{TITLE}</div>
+    <div class="subtitle">{SUBTITLE}</div>
+  </div>
+  <div class="bottom">{ICONS}</div>
+</body>
+</html>

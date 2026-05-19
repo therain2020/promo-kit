@@ -2,7 +2,7 @@
 name: publisher
 description: |
   Promo-kit 发布引擎。薄层包装 agent-reach，提供发布前确认、失败重试、发布后记录。
-  支持小红书、小黑盒、Twitter/X、LinkedIn、Reddit、Dev.to。
+  支持小红书、小黑盒、掘金、Twitter/X、LinkedIn、Reddit、Dev.to。
   由 promo-kit 调度器内部调用。
 allowed-tools:
   - Bash
@@ -23,7 +23,7 @@ promo-kit 的内部引擎。将文案和配图转换为 agent-reach 调用，执
 由 promo-kit 调度器通过 `Skill("publisher", args)` 调用：
 
 ```
-platform: xhs|xiaoheihe|twitter|linkedin|reddit|devto
+platform: xhs|xiaoheihe|juejin|twitter|linkedin|reddit|devto
 content_path: "文案 md 文件绝对路径"
 images: "图片路径列表"  (可选，逗号分隔)
 project_name: "项目名称"
@@ -38,6 +38,7 @@ project_name: "项目名称"
 | Twitter/X (twitter) | `social 推特` | tweet/thread |
 | LinkedIn (linkedin) | `career LinkedIn` | post/article |
 | Reddit (reddit) | `social Reddit` | text post |
+| 掘金 (juejin) | `social 掘金` | 技术文章 |
 | Dev.to (devto) | `dev github` | 通过 GitHub API |
 
 ## 工作流
@@ -85,6 +86,11 @@ Skill("agent-reach", args="在 Reddit r/{subreddit} 发帖：标题：{title}，
 **小黑盒:**
 ```
 Skill("agent-reach", args="在小黑盒发一篇帖子：标题：{title}，正文：{content}")
+```
+
+**掘金:**
+```
+Skill("agent-reach", args="在掘金发布一篇技术文章：标题：{title}，正文：{content}，封面图：{cover_image}")
 ```
 
 ### Step 3: 执行发布

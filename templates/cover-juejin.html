@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1000, initial-scale=1">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+body {
+  width:1000px; height:420px; overflow:hidden;
+  font-family: "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#090A0C; position:relative; display:flex; align-items:center; padding:48px 64px;
+}
+body::after {
+  content:""; position:absolute; right:0; top:0; bottom:0; width:280px;
+  background:linear-gradient(90deg,transparent 0%,rgba(132,94,247,0.06) 100%);
+}
+.emoji { font-size:96px; position:absolute; right:80px; top:50%; transform:translateY(-50%); z-index:1 }
+.content { position:relative; z-index:2; max-width:620px }
+.brow {
+  font-family: "JetBrains Mono","Cascadia Code","SF Mono",monospace;
+  font-size:16px; color:#3BC9DB; letter-spacing:2px; margin-bottom:16px;
+}
+.title {
+  font-family: Georgia,"Noto Serif CJK SC","STSong","SimSun",serif;
+  font-size:48px; font-weight:700; color:#E4E4E6; line-height:1.2; margin-bottom:16px;
+}
+.tagline { font-size:22px; color:#787A80; line-height:1.5 }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="brow">{PROJECT}</div>
+    <div class="title">{TITLE}</div>
+    <div class="tagline">{TAGLINE}</div>
+  </div>
+  <div class="emoji">{EMOJI}</div>
+</body>
+</html>

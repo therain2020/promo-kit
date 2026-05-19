@@ -4,37 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=750, initial-scale=1">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
 body {
-  width: 750px; min-height: 1000px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: #FFFFFF; padding: 80px 50px;
+  width:750px; min-height:1000px;
+  font-family: "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#090A0C; padding:80px 48px;
 }
-h1 { font-size: 40px; font-weight: 700; color: #1A1A1A; text-align: center; margin-bottom: 56px; }
-.diagram { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+h1 {
+  font-family: Georgia,"Noto Serif CJK SC","STSong","SimSun",serif;
+  font-size:42px; font-weight:700; color:#E4E4E6; text-align:center; margin-bottom:56px;
+}
+.diagram { display:flex; flex-direction:column; align-items:center; gap:18px }
 .box {
-  background: #F8F8F8; border: 2px solid #E0E0E0; border-radius: 16px;
-  padding: 28px 36px; width: 100%; max-width: 580px; text-align: center;
+  background:#131418; border:1px solid #22242B; border-radius:18px;
+  padding:28px 36px; width:100%; max-width:580px; text-align:center;
 }
-.box-title { font-size: 30px; font-weight: 600; color: #1A1A1A; margin-bottom: 12px; }
-.box-desc { font-size: 24px; color: #666666; line-height: 1.5; }
-.box-highlight { border-color: #FF2442; background: #FFF5F5; }
-.box-highlight .box-title { color: #FF2442; }
-.arrow {
-  display: flex; align-items: center; gap: 8px; font-size: 28px; color: #999999;
-}
-.arrow-line { width: 2px; height: 24px; background: #CCCCCC; }
-.arrow-down { font-size: 24px; color: #CCCCCC; }
+.btitle { font-size:30px; font-weight:700; color:#E4E4E6; margin-bottom:10px }
+.bdesc { font-size:24px; color:#787A80; line-height:1.5 }
+.bhl { border-color:#3BC9DB; background:rgba(59,201,219,0.04) }
+.bhl .btitle { color:#3BC9DB }
+.bpurple { border-color:#845EF7; background:rgba(132,94,247,0.04) }
+.bpurple .btitle { color:#845EF7 }
+.arrow { display:flex; flex-direction:column; align-items:center; gap:4px }
+.al { width:2px; height:22px; background:#22242B }
+.ad { font-size:22px; color:#3D4047 }
 .label {
-  position: relative; font-size: 20px; color: #999999; margin: -8px 0;
-  background: #FFFFFF; padding: 0 16px;
+  font-size:18px; color:#787A80; margin:-6px 0; background:#090A0C; padding:0 16px; position:relative; z-index:1;
 }
 </style>
 </head>
 <body>
   <h1>{DIAGRAM_TITLE}</h1>
-  <div class="diagram">
-    {BLOCKS}
-  </div>
+  <div class="diagram">{BLOCKS}</div>
 </body>
 </html>

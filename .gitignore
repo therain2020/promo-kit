@@ -1,6 +1,7 @@
 # 运行时产出
 promo-content/
 execution-log/
+temp/
 
 # 工程产出
 logs/

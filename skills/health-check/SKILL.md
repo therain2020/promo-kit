@@ -31,10 +31,10 @@ check_level: quick|full
 
 ### L1: 引擎完整性
 
-检查 4 个引擎 SKILL.md 文件存在且 frontmatter 合法：
+检查 5 个引擎 SKILL.md 文件存在且 frontmatter 合法：
 
 ```
-对每个引擎 (copywriter, image-gen, publisher, health-check):
+对每个引擎 (copywriter, image-gen, template-designer, publisher, health-check):
   - Glob 确认 skills/<engine>/SKILL.md 存在
   - Read 文件前 15 行，检查 YAML frontmatter 包含 name: 字段
   - 输出 OK/FAIL/WARN
@@ -44,7 +44,7 @@ check_level: quick|full
 
 ```
 文案模板: Glob 确认 references/copywriter-cn.md, references/copywriter-en.md, references/design-guide.md 存在
-HTML 模板: Glob 确认 templates/*.html (8 个) 全部存在
+HTML 模板: Glob 确认 templates/*.html (15 个) 全部存在
 统计错误数
 ```
 
@@ -69,8 +69,8 @@ browse daemon 检查:
 
 跑一条最小 pipeline：
 
-1. 用示例数据生成一篇小红书笔记
-2. 用示例数据生成一张 cover-xhs 配图
+1. 用示例数据生成一篇推广文案
+2. 用示例数据生成一张封面配图
 3. 检查产出文件格式正确
 
 ```
@@ -88,6 +88,7 @@ browse daemon 检查:
 L1 引擎完整性: {PASS/FAIL}
   OK  skills/copywriter/SKILL.md
   OK  skills/image-gen/SKILL.md
+  OK  skills/template-designer/SKILL.md
   OK  skills/publisher/SKILL.md
   OK  skills/health-check/SKILL.md
 
@@ -95,7 +96,7 @@ L2 模板完整性: {PASS/FAIL}
   OK  references/copywriter-cn.md
   OK  references/copywriter-en.md
   OK  references/design-guide.md
-  OK  templates/*.html ×8
+  OK  templates/*.html ×15
 
 L3 外部依赖: {PASS/FAIL}
   OK  humanizer-zh

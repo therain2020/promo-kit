@@ -8,7 +8,7 @@
 
 跟它说说你的项目。它自己找切入点，用中文或英文写文案，把那股 AI 味儿去掉，生成配图，然后发布。或者把文件给你，你自己来。
 
-中文平台：小红书、小黑盒。
+中文平台：小红书、小黑盒、掘金。
 英文平台：Twitter/X、LinkedIn、Reddit、Dev.to。
 
 ## 流水线
@@ -30,6 +30,7 @@
 |------|------|------|
 | 小红书 | 中文 | 带封面图、正文、话题标签的笔记 |
 | 小黑盒 | 中文 | 带代码块、架构描述的技术帖 |
+| 掘金 | 中文 | 带封面图、代码块、话题标签的技术文章 |
 | Twitter/X | 英文 | 推文串或单条推文 |
 | LinkedIn | 英文 | 长文或短文 |
 | Reddit | 英文 | r/programming 或特定子版块的帖子 |
@@ -127,16 +128,23 @@ promo-kit/
 │   ├── publisher/SKILL.md            # agent-reach 包装，含重试逻辑
 │   └── health-check/SKILL.md         # 四级依赖检查
 ├── templates/                        # 配图 HTML 模板
-│   ├── cover-xhs.html                # 小红书封面：标题 + 价值主张
-│   ├── comparison.html               # 横向对比图
+│   ├── cover-xhs.html                # 小红书封面：经典红色渐变版
+│   ├── xhs-cover-tech.html           # 小红书封面：科技极简版 (1080×1440)
+│   ├── xhs-pain.html                 # 痛点分析卡片
+│   ├── xhs-features.html             # 功能亮点卡片
+│   ├── xhs-steps.html                # 步骤教程卡片（科技极简）
+│   ├── xhs-cta.html                  # 行动号召卡片（深色科技极简）
+│   ├── xhs-comparison.html           # 方案对比（科技极简）
+│   ├── cover-juejin.html             # 掘金封面：标题 + 价值主张
+│   ├── comparison.html               # 横向对比图（经典版）
 │   ├── terminal.html                 # 终端风格 CLI 展示
-│   ├── steps.html                    # 编号步骤卡片
+│   ├── steps.html                    # 编号步骤卡片（经典版）
 │   ├── phone-text.html               # 模拟手机消息
-│   ├── cta-card.html                 # 行动号召卡片
+│   ├── cta-card.html                 # 行动号召卡片（经典版）
 │   ├── architecture.html             # 组件关系图
 │   └── code-block.html               # 语法高亮代码
 ├── references/
-│   ├── copywriter-cn.md              # 中文模板（小红书、小黑盒）
+│   ├── copywriter-cn.md              # 中文模板（小红书、小黑盒、掘金）
 │   ├── copywriter-en.md              # 英文模板（Twitter、LinkedIn、Reddit、Dev.to）
 │   └── design-guide.md               # 配图设计规范
 ├── promo-content/                    # 产出文件（gitignored）
@@ -162,7 +170,9 @@ image-gen 按以下分辨率渲染：
 
 | 平台 | 尺寸 | 每篇张数 |
 |------|------|---------|
-| 小红书 | 750 x 1000 | 3-6 张 |
+| 小红书（封面/内容） | 1080 x 1440 | 3-6 张 |
+| 小红书（辅助卡片） | 750 x 1000 | 3-6 张 |
 | 小黑盒 | 750 x 1000 或 1200 x 800 | 2-4 张 |
+| 掘金 | 1000 x 420（封面）+ 灵活尺寸 | 1-3 张 |
 
 模板是纯 HTML 加内联 CSS。没有外部字体，不用 JS 框架。headless 浏览器直接从磁盘加载，2x 分辨率截图。

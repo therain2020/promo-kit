@@ -2,9 +2,9 @@
 name: promo-kit
 description: |
   开源项目推广全链路工具包。覆盖：项目分析 → 文案生成(中/英) → AI痕迹去除 → 配图制作 → 多平台发布。
-  中文：小红书/小黑盒。English: Twitter/LinkedIn/Reddit/Dev.to。
+  中文：小红书/小黑盒/掘金。English: Twitter/LinkedIn/Reddit/Dev.to。
   Use when asked to "推广我的项目", "写一篇小红书", "发推特推广", "promote my project on social media",
-  "make a Twitter thread for my repo", "在小黑盒宣传", or any open-source promotion request.
+  "make a Twitter thread for my repo", "在小黑盒宣传", "在掘金上发一篇", "写一篇掘金文章", or any open-source promotion request.
 allowed-tools:
   - Bash
   - Read
@@ -20,6 +20,8 @@ triggers:
   - 写一篇小红书
   - 发个推特推广
   - 在小黑盒宣传
+  - 在掘金上发一篇
+  - 写一篇掘金文章
   - 帮我做推广
   - promote my project
   - promote on social media
@@ -38,11 +40,12 @@ promo-kit (调度器)
   ├── health-check     # 启动前健康检查
   ├── copywriter       # 文案引擎 (zh/en)
   ├── humanizer        # 外部: 去 AI 味 (humanizer-zh / humanizer)
+  ├── template-designer # 模板设计引擎 (风格→HTML)
   ├── image-gen        # 配图引擎 (HTML→$B→PNG)
   └── publisher        # 发布引擎 (薄层包装 agent-reach)
 ```
 
-每个引擎独立维护，SKILL.md 在 `skills/<name>/SKILL.md`。
+每个引擎独立维护，SKILL.md 在 `skills/<name>/SKILL.md`。template-designer 可根据用户描述的风格生成新模板，与 image-gen 联动。
 
 ---
 
@@ -63,9 +66,9 @@ promo-kit (调度器)
 | 维度 | 选项 | 默认 |
 |------|------|------|
 | 语言 | zh / en | zh |
-| 平台 | xhs / xiaoheihe / twitter / linkedin / reddit / devto | xhs |
+| 平台 | xhs / xiaoheihe / juejin / twitter / linkedin / reddit / devto | xhs |
 | 角度 | A-F 或 auto | auto（自动选择） |
-| 需要配图 | yes / no | zh 平台 yes, en 平台 no |
+| 需要配图 | yes / no | zh 平台 yes（小红书 3-6 张，小黑盒 2-4 张，掘金 1-3 张），en 平台 no |
 | 需要发布 | yes / no | no（先问用户） |
 
 如果用户未指定平台和语言，使用 AskUserQuestion 确认。
