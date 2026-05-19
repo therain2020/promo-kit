@@ -34,23 +34,36 @@ check_level: quick|full
 检查 4 个引擎 SKILL.md 文件存在且 frontmatter 合法：
 
 ```
-对每个引擎 (copywriter, image-gen, publisher, health-check):
-  - Glob 确认 skills/<engine>/SKILL.md 存在
-  - Read 文件前 15 行，检查 YAML frontmatter 包含 name: 字段
-  - 输出 OK/FAIL/WARN
+skills/copywriter/SKILL.md
+skills/image-gen/SKILL.md
+skills/publisher/SKILL.md
+skills/health-check/SKILL.md
 ```
+
+每个文件检查：
+- 文件存在
+- YAML frontmatter 包含 `name:` 字段
 
 ### L2: 模板完整性
 
-```
-文案模板: Glob 确认 references/copywriter-cn.md, references/copywriter-en.md, references/design-guide.md 存在
-HTML 模板: Glob 确认 templates/*.html (8 个) 全部存在
-统计错误数
-```
+文案模板检查：
+- `references/copywriter-cn.md`
+- `references/copywriter-en.md`
+- `references/design-guide.md`
+
+HTML 模板检查（8 个）：
+- `templates/cover-xhs.html`
+- `templates/comparison.html`
+- `templates/terminal.html`
+- `templates/steps.html`
+- `templates/phone-text.html`
+- `templates/cta-card.html`
+- `templates/architecture.html`
+- `templates/code-block.html`
 
 ### L3: 外部依赖可达性
 
-检查 skill 可用性。通过在调用时尝试引用目标 skill 来判断：
+检查 skill 可用性：
 
 | 依赖 | 检查方式 | 用途 |
 |------|---------|------|
@@ -58,12 +71,6 @@ HTML 模板: Glob 确认 templates/*.html (8 个) 全部存在
 | humanizer | `Skill("humanizer")` 可达 | 英文去 AI 味 |
 | agent-reach | `Skill("agent-reach")` 可达 | 多平台发布 |
 | gstack browse ($B) | `$B status` 返回 healthy | 配图截图 |
-
-```
-browse daemon 检查:
-  1. 定位 $B binary: 先查 <repo_root>/.claude/skills/gstack/browse/dist/browse，再查 ~/.claude/skills/gstack/browse/dist/browse
-  2. 执行 $B status → 输出 OK/WARN/FAIL
-```
 
 ### L4: 产出验证（仅 full 模式）
 
@@ -73,10 +80,7 @@ browse daemon 检查:
 2. 用示例数据生成一张 cover-xhs 配图
 3. 检查产出文件格式正确
 
-```
-检查 promo-content/ 和 execution-log/ 目录可写入:
-  创建临时文件 → 写入 → 删除 → 报告 OK/FAIL
-```
+验证 `promo-content/` 和 `execution-log/` 目录可写入。
 
 ## 输出格式
 

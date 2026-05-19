@@ -76,10 +76,6 @@ output_dir: "输出目录绝对路径"
 
 ### Step 1: 加载模板
 
-根据 `{lang}` 选择模板文件:
-- zh → `references/copywriter-cn.md`
-- en → `references/copywriter-en.md`
-
 根据 `{platform}` 和 `{angle}` 在模板文件中匹配对应章节。
 
 ### Step 2: 生成文案
