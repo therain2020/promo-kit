@@ -61,8 +61,13 @@ HTML 模板: Glob 确认 templates/*.html (15 个) 全部存在
 
 ```
 browse daemon 检查:
-  1. 定位 $B binary: 先查 <repo_root>/.claude/skills/gstack/browse/dist/browse，再查 ~/.claude/skills/gstack/browse/dist/browse
-  2. 执行 $B status → 输出 OK/WARN/FAIL
+  1. Locate the binary — do NOT assume $B is set. The variable is defined
+     only inside gstack's own SKILL.md preamble; it does not persist.
+     Find it with:
+       Glob **/browse/dist/browse* under ~/.claude/skills/gstack/
+     On Windows the binary is browse.exe, not browse.
+  2. Run "<found_path>" status → parse "Status: healthy"/"Status: unhealthy"
+     If the daemon is not running, the binary auto-launches it on any command.
 ```
 
 ### L4: 产出验证（仅 full 模式）

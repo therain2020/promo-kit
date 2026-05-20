@@ -80,6 +80,17 @@ HTML 模板检查（15 个）：
 | agent-reach | `Skill("agent-reach")` 可达 | 多平台发布 |
 | gstack browse ($B) | `$B status` 返回 healthy | 配图截图 |
 
+```
+browse daemon 检查:
+  1. Locate the binary — do NOT assume $B is set. The variable is defined
+     only inside gstack's own SKILL.md preamble; it does not persist.
+     Find it with:
+       Glob **/browse/dist/browse* under ~/.claude/skills/gstack/
+     On Windows the binary is browse.exe, not browse.
+  2. Run "<found_path>" status → parse "Status: healthy"/"Status: unhealthy"
+     If the daemon is not running, the binary auto-launches it on any command.
+```
+
 ### L4: 产出验证（仅 full 模式）
 
 跑一条最小 pipeline：
